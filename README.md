@@ -2,7 +2,9 @@
 
 Add comments to your JAMstack website in few minutes. Maybe it is not a comprehensive solution that serves all your needs, but it works great as a starting point. [I have been using it for months on my personal website](https://pawelgrzybek.com/bye-bye-disqus-i-built-my-commenting-system-using-aws-serverless-stack-and-netlify-build-hooks/) and it worked like a charm. I hope it will help you too!
 
-Check this [little demo app](https://jamstack-cdk-comments.netlify.app) and feel free to drop a new comment ;)
+Add comments to your JAMstack website in a few minutes. Maybe it's not a comprehensive solution that serves all your needs but it works great as a starting point. [I have been using it for months on my personal website](https://pawelgrzybek.com/bye-bye-disqus-i-built-my-commenting-system-using-aws-serverless-stack-and-netlify-build-hooks/) and it worked like a charm. I hope it will help you too!
+
+Check this [little demo app](https://jamstack-cdk-comments.netlify.app) and feel free to drop a new comment 😉
 
 ## Prerequisites
 
@@ -64,7 +66,7 @@ yarn
 
 ### Bootstrap an environment
 
-If you haven't already, you need to [bootstrap an environment](https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html) to be able to deploy AWS CDK apps. This process will create required resources (Amazon S3 bucket for storing files and IAM roles that grant permissions needed to perform deployments) and needs to be done per environment (a combination of an AWS account and region).
+If you haven't already, then you need to [bootstrap an environment](https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html) to be able to deploy AWS CDK apps. This process will create required resources (Amazon S3 bucket for storing files and IAM roles that grant permissions needed to perform deployments) and needs to be done per environment (a combination of an AWS account and region).
 
 ```
 cdk bootstrap
@@ -99,6 +101,6 @@ CommentsStack.CommentsApiOutput = https://mp5chwpwy4.execute-api.eu-west-2.amazo
 
 ## Your contribution
 
-Don't be a jerk and stop complaining on Twitter of HackerNews. If there is something that you can think of to improve it, please [reach out to me](https://twitter.com/pawelgrzybek) or submit a pull request. Let's build a better web together instead of spamming shit all over the place please.
+Don't be a jerk and stop complaining on Twitter of HackerNews. If there's anything you can think of to improve it, please [reach out to me](https://twitter.com/pawelgrzybek) or submit a pull request. Let's build a better web together instead of spamming shit all over the place, please.
 
 Enjoy 👋
