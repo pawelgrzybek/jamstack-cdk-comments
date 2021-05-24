@@ -5,5 +5,5 @@ import { CommentsStack } from "../lib/jamstack-cdk-comments-stack";
 
 const app = new cdk.App();
 new CommentsStack(app, "CommentsStack", {
-  allowOrigins: ["https://pawelgrzybek.com"],
+  allowOrigins: ["https://jamstack-cdk-comments.netlify.app"],
 });
