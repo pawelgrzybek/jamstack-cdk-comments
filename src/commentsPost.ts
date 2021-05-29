@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { obfuscateId, generateResponse } from "./utils";
 
 const { AWS_REGION: region, TABLE_NAME: TableName } = process.env;
@@ -10,8 +10,8 @@ const { AWS_REGION: region, TABLE_NAME: TableName } = process.env;
 const dbClient = new DynamoDBClient({ region });
 
 async function handler(
-  event: APIGatewayProxyEventV2
-): Promise<APIGatewayProxyResultV2> {
+  event: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> {
   if (!event?.body) {
     console.error("Required body is missing.");
 

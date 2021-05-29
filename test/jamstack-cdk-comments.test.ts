@@ -2,7 +2,6 @@ import {
   expect as expectCDK,
   haveResource,
   haveResourceLike,
-  haveOutput,
   countResources,
 } from "@aws-cdk/assert";
 import * as cdk from "@aws-cdk/core";
@@ -30,39 +29,8 @@ describe("JAMstack CDK comments Stack", () => {
 
   it("creates API Gateway", () => {
     expectCDK(stack).to(
-      haveResourceLike("AWS::ApiGatewayV2::Api", {
-        CorsConfiguration: {
-          AllowHeaders: ["Content-Type"],
-          AllowMethods: ["GET", "POST"],
-          AllowOrigins: ["https://pawelgrzybek.com"],
-        },
+      haveResourceLike("AWS::ApiGateway::RestApi", {
         Name: "CommentsApi",
-        ProtocolType: "HTTP",
-      })
-    );
-  });
-
-  it("creates GET route", () => {
-    expectCDK(stack).to(
-      haveResource("AWS::ApiGatewayV2::Route", {
-        RouteKey: "GET /",
-      })
-    );
-  });
-
-  it("creates POST route", () => {
-    expectCDK(stack).to(
-      haveResource("AWS::ApiGatewayV2::Route", {
-        RouteKey: "POST /",
-      })
-    );
-  });
-
-  it("creates output", () => {
-    expectCDK(stack).to(
-      haveOutput({
-        outputName: "CommentsApiOutput",
-        exportName: "CommentsApiOutput",
       })
     );
   });

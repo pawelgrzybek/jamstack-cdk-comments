@@ -1,7 +1,6 @@
 import * as cdk from "@aws-cdk/core";
 import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
-import { CorsHttpMethod, HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2";
-import { LambdaProxyIntegration } from "@aws-cdk/aws-apigatewayv2-integrations";
+import { RestApi, LambdaIntegration } from "@aws-cdk/aws-apigateway";
 import * as dynamodb from "@aws-cdk/aws-dynamodb";
 import * as path from "path";
 
@@ -40,34 +39,18 @@ export class CommentsStack extends cdk.Stack {
     commentsTable.grantWriteData(commentsPost);
 
     // API
-    const commentsApi = new HttpApi(this, "CommentsApi", {
-      corsPreflight: {
+    const commentsApi = new RestApi(this, "CommentsApi", {
+      defaultCorsPreflightOptions: {
         allowHeaders: ["Content-Type"],
         allowOrigins: props.allowOrigins,
-        allowMethods: [CorsHttpMethod.GET, CorsHttpMethod.POST],
+        allowMethods: ["GET", "POST"],
+      },
+      deployOptions: {
+        throttlingRateLimit: 1,
+        throttlingBurstLimit: 1,
       },
     });
-
-    commentsApi.addRoutes({
-      path: "/",
-      methods: [HttpMethod.GET],
-      integration: new LambdaProxyIntegration({
-        handler: commentsGet,
-      }),
-    });
-
-    commentsApi.addRoutes({
-      path: "/",
-      methods: [HttpMethod.POST],
-      integration: new LambdaProxyIntegration({
-        handler: commentsPost,
-      }),
-    });
-
-    // CloudFormation outputs
-    new cdk.CfnOutput(this, "CommentsApiOutput", {
-      exportName: "CommentsApiOutput",
-      value: commentsApi.url ?? "",
-    });
+    commentsApi.root.addMethod("GET", new LambdaIntegration(commentsGet));
+    commentsApi.root.addMethod("POST", new LambdaIntegration(commentsPost));
   }
 }

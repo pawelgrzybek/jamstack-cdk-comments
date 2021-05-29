@@ -1,4 +1,4 @@
-import { APIGatewayProxyResultV2 } from "aws-lambda";
+import { APIGatewayProxyResult } from "aws-lambda";
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { generateResponse, orderComments } from "./utils";
@@ -17,7 +17,7 @@ interface IComment {
   createdAt: number;
 }
 
-async function handler(): Promise<APIGatewayProxyResultV2> {
+async function handler(): Promise<APIGatewayProxyResult> {
   try {
     const { Items } = await dbClient.send(
       new ScanCommand({
