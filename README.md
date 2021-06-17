@@ -4,8 +4,6 @@ Add comments to your JAMstack website in few minutes. Maybe it is not a comprehe
 
 Add comments to your JAMstack website in a few minutes. Maybe it's not a comprehensive solution that serves all your needs but it works great as a starting point. [I have been using it for months on my personal website](https://pawelgrzybek.com/bye-bye-disqus-i-built-my-commenting-system-using-aws-serverless-stack-and-netlify-build-hooks/) and it worked like a charm. I hope it will help you too!
 
-Check this [little demo app](https://jamstack-cdk-comments.netlify.app) and feel free to drop a new comment 😉
-
 ## Prerequisites
 
 - [AWS account](https://aws.amazon.com)
