@@ -4,11 +4,11 @@ import {
   haveResourceLike,
   countResources,
 } from "@aws-cdk/assert";
-import * as cdk from "@aws-cdk/core";
+import { App } from "aws-cdk-lib";
 import * as Comments from "../lib/jamstack-cdk-comments-stack";
 
 describe("JAMstack CDK comments Stack", () => {
-  const app = new cdk.App();
+  const app = new App();
   const stack = new Comments.CommentsStack(app, "MyTestStack", {
     allowOrigins: ["https://pawelgrzybek.com"],
   });
